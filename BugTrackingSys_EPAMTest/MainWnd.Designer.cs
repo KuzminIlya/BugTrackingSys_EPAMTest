@@ -38,20 +38,21 @@
             this.mmenuTables = new System.Windows.Forms.ToolStripMenuItem();
             this.mmenuTablesAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.mmenuTablesDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.mmenu_TablesEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.mmenuTablesRefresh = new System.Windows.Forms.ToolStripMenuItem();
             this.mmenuTablesRefreshAll = new System.Windows.Forms.ToolStripMenuItem();
             this.mmenuQueries = new System.Windows.Forms.ToolStripMenuItem();
+            this.mmenuQueriesShow = new System.Windows.Forms.ToolStripMenuItem();
+            this.mmenuQueriesShowTable = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.mmenuQueriesShowTaskListProject = new System.Windows.Forms.ToolStripMenuItem();
+            this.mmenuQueriesShowTaskListUser = new System.Windows.Forms.ToolStripMenuItem();
             this.mmenuQueriesCreate = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dtGrdV_TablesView = new System.Windows.Forms.DataGridView();
             this.rchtxtbx_Logs = new System.Windows.Forms.RichTextBox();
-            this.mmenuQueriesShow = new System.Windows.Forms.ToolStripMenuItem();
-            this.mmenuQueriesShowTable = new System.Windows.Forms.ToolStripMenuItem();
-            this.mmenuQueriesShowTaskListProject = new System.Windows.Forms.ToolStripMenuItem();
-            this.mmenuQueriesShowTaskListUser = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.mmenu_TablesEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.opnFlDlg_LoadDataSource = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -144,6 +145,13 @@
             this.mmenuTablesDelete.Text = "Удалить...";
             this.mmenuTablesDelete.Click += new System.EventHandler(this.mmenuTablesDelete_Click);
             // 
+            // mmenu_TablesEdit
+            // 
+            this.mmenu_TablesEdit.Name = "mmenu_TablesEdit";
+            this.mmenu_TablesEdit.Size = new System.Drawing.Size(180, 22);
+            this.mmenu_TablesEdit.Text = "Редактировать...";
+            this.mmenu_TablesEdit.Click += new System.EventHandler(this.mmenu_TablesEdit_Click);
+            // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
@@ -171,6 +179,43 @@
             this.mmenuQueries.Name = "mmenuQueries";
             this.mmenuQueries.Size = new System.Drawing.Size(68, 20);
             this.mmenuQueries.Text = "Запросы";
+            // 
+            // mmenuQueriesShow
+            // 
+            this.mmenuQueriesShow.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mmenuQueriesShowTable,
+            this.toolStripMenuItem3,
+            this.mmenuQueriesShowTaskListProject,
+            this.mmenuQueriesShowTaskListUser});
+            this.mmenuQueriesShow.Name = "mmenuQueriesShow";
+            this.mmenuQueriesShow.Size = new System.Drawing.Size(180, 22);
+            this.mmenuQueriesShow.Text = "Показать";
+            // 
+            // mmenuQueriesShowTable
+            // 
+            this.mmenuQueriesShowTable.Name = "mmenuQueriesShowTable";
+            this.mmenuQueriesShowTable.Size = new System.Drawing.Size(239, 22);
+            this.mmenuQueriesShowTable.Text = "Всю таблицу...";
+            this.mmenuQueriesShowTable.Click += new System.EventHandler(this.mmenuQueriesShowTable_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(236, 6);
+            // 
+            // mmenuQueriesShowTaskListProject
+            // 
+            this.mmenuQueriesShowTaskListProject.Name = "mmenuQueriesShowTaskListProject";
+            this.mmenuQueriesShowTaskListProject.Size = new System.Drawing.Size(239, 22);
+            this.mmenuQueriesShowTaskListProject.Text = "Список задач в проекте";
+            this.mmenuQueriesShowTaskListProject.Click += new System.EventHandler(this.mmenuQueriesShowTaskListProject_Click);
+            // 
+            // mmenuQueriesShowTaskListUser
+            // 
+            this.mmenuQueriesShowTaskListUser.Name = "mmenuQueriesShowTaskListUser";
+            this.mmenuQueriesShowTaskListUser.Size = new System.Drawing.Size(239, 22);
+            this.mmenuQueriesShowTaskListUser.Text = "Список задач на исполнителе";
+            this.mmenuQueriesShowTaskListUser.Click += new System.EventHandler(this.mmenuQueriesShowTaskListUser_Click);
             // 
             // mmenuQueriesCreate
             // 
@@ -215,49 +260,9 @@
             this.rchtxtbx_Logs.TabIndex = 2;
             this.rchtxtbx_Logs.Text = "";
             // 
-            // mmenuQueriesShow
+            // opnFlDlg_LoadDataSource
             // 
-            this.mmenuQueriesShow.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mmenuQueriesShowTable,
-            this.toolStripMenuItem3,
-            this.mmenuQueriesShowTaskListProject,
-            this.mmenuQueriesShowTaskListUser});
-            this.mmenuQueriesShow.Name = "mmenuQueriesShow";
-            this.mmenuQueriesShow.Size = new System.Drawing.Size(180, 22);
-            this.mmenuQueriesShow.Text = "Показать";
-            // 
-            // mmenuQueriesShowTable
-            // 
-            this.mmenuQueriesShowTable.Name = "mmenuQueriesShowTable";
-            this.mmenuQueriesShowTable.Size = new System.Drawing.Size(239, 22);
-            this.mmenuQueriesShowTable.Text = "Всю таблицу...";
-            this.mmenuQueriesShowTable.Click += new System.EventHandler(this.mmenuQueriesShowTable_Click);
-            // 
-            // mmenuQueriesShowTaskListProject
-            // 
-            this.mmenuQueriesShowTaskListProject.Name = "mmenuQueriesShowTaskListProject";
-            this.mmenuQueriesShowTaskListProject.Size = new System.Drawing.Size(239, 22);
-            this.mmenuQueriesShowTaskListProject.Text = "Список задач в проекте";
-            this.mmenuQueriesShowTaskListProject.Click += new System.EventHandler(this.mmenuQueriesShowTaskListProject_Click);
-            // 
-            // mmenuQueriesShowTaskListUser
-            // 
-            this.mmenuQueriesShowTaskListUser.Name = "mmenuQueriesShowTaskListUser";
-            this.mmenuQueriesShowTaskListUser.Size = new System.Drawing.Size(239, 22);
-            this.mmenuQueriesShowTaskListUser.Text = "Список задач на исполнителе";
-            this.mmenuQueriesShowTaskListUser.Click += new System.EventHandler(this.mmenuQueriesShowTaskListUser_Click);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(236, 6);
-            // 
-            // mmenu_TablesEdit
-            // 
-            this.mmenu_TablesEdit.Name = "mmenu_TablesEdit";
-            this.mmenu_TablesEdit.Size = new System.Drawing.Size(180, 22);
-            this.mmenu_TablesEdit.Text = "Редактировать...";
-            this.mmenu_TablesEdit.Click += new System.EventHandler(this.mmenu_TablesEdit_Click);
+            this.opnFlDlg_LoadDataSource.FileName = "openFileDialog1";
             // 
             // MainWnd
             // 
@@ -308,6 +313,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem mmenuQueriesShowTaskListProject;
         private System.Windows.Forms.ToolStripMenuItem mmenuQueriesShowTaskListUser;
+        private System.Windows.Forms.OpenFileDialog opnFlDlg_LoadDataSource;
     }
 }
 
