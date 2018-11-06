@@ -85,33 +85,37 @@
             // mmenu_FileCreate
             // 
             this.mmenu_FileCreate.Name = "mmenu_FileCreate";
-            this.mmenu_FileCreate.Size = new System.Drawing.Size(137, 22);
+            this.mmenu_FileCreate.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.mmenu_FileCreate.Size = new System.Drawing.Size(180, 22);
             this.mmenu_FileCreate.Text = "Создать...";
             this.mmenu_FileCreate.Click += new System.EventHandler(this.mmenu_FileCreate_Click);
             // 
             // mmenu_FileLoad
             // 
             this.mmenu_FileLoad.Name = "mmenu_FileLoad";
-            this.mmenu_FileLoad.Size = new System.Drawing.Size(137, 22);
+            this.mmenu_FileLoad.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
+            this.mmenu_FileLoad.Size = new System.Drawing.Size(180, 22);
             this.mmenu_FileLoad.Text = "Загрузить...";
             this.mmenu_FileLoad.Click += new System.EventHandler(this.mmenu_FileLoad_Click);
             // 
             // mmenu_FileClose
             // 
+            this.mmenu_FileClose.Enabled = false;
             this.mmenu_FileClose.Name = "mmenu_FileClose";
-            this.mmenu_FileClose.Size = new System.Drawing.Size(137, 22);
+            this.mmenu_FileClose.Size = new System.Drawing.Size(180, 22);
             this.mmenu_FileClose.Text = "Закрыть";
             this.mmenu_FileClose.Click += new System.EventHandler(this.mmenu_FileClose_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(134, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
             // mmenu_FileExit
             // 
             this.mmenu_FileExit.Name = "mmenu_FileExit";
-            this.mmenu_FileExit.Size = new System.Drawing.Size(137, 22);
+            this.mmenu_FileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.mmenu_FileExit.Size = new System.Drawing.Size(180, 22);
             this.mmenu_FileExit.Text = "Выход";
             this.mmenu_FileExit.Click += new System.EventHandler(this.mmenu_FileExit_Click);
             // 
@@ -130,41 +134,52 @@
             // 
             // mmenuTablesAdd
             // 
+            this.mmenuTablesAdd.Enabled = false;
             this.mmenuTablesAdd.Name = "mmenuTablesAdd";
-            this.mmenuTablesAdd.Size = new System.Drawing.Size(180, 22);
+            this.mmenuTablesAdd.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.mmenuTablesAdd.Size = new System.Drawing.Size(203, 22);
             this.mmenuTablesAdd.Text = "Добавить...";
             this.mmenuTablesAdd.Click += new System.EventHandler(this.mmenuTablesAdd_Click);
             // 
             // mmenuTablesDelete
             // 
+            this.mmenuTablesDelete.Enabled = false;
             this.mmenuTablesDelete.Name = "mmenuTablesDelete";
-            this.mmenuTablesDelete.Size = new System.Drawing.Size(180, 22);
+            this.mmenuTablesDelete.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.mmenuTablesDelete.Size = new System.Drawing.Size(203, 22);
             this.mmenuTablesDelete.Text = "Удалить...";
             this.mmenuTablesDelete.Click += new System.EventHandler(this.mmenuTablesDelete_Click);
             // 
             // mmenu_TablesEdit
             // 
+            this.mmenu_TablesEdit.Enabled = false;
             this.mmenu_TablesEdit.Name = "mmenu_TablesEdit";
-            this.mmenu_TablesEdit.Size = new System.Drawing.Size(180, 22);
+            this.mmenu_TablesEdit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+            this.mmenu_TablesEdit.Size = new System.Drawing.Size(203, 22);
             this.mmenu_TablesEdit.Text = "Редактировать...";
             this.mmenu_TablesEdit.Click += new System.EventHandler(this.mmenu_TablesEdit_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(200, 6);
             // 
             // mmenuTablesRecEdit
             // 
+            this.mmenuTablesRecEdit.Enabled = false;
             this.mmenuTablesRecEdit.Name = "mmenuTablesRecEdit";
-            this.mmenuTablesRecEdit.Size = new System.Drawing.Size(180, 22);
-            this.mmenuTablesRecEdit.Text = "Записать";
+            this.mmenuTablesRecEdit.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.mmenuTablesRecEdit.Size = new System.Drawing.Size(203, 22);
+            this.mmenuTablesRecEdit.Text = "Обновить";
             this.mmenuTablesRecEdit.Click += new System.EventHandler(this.mmenuTablesRecEdit_Click);
             // 
             // mmenuTablesRecCanсel
             // 
+            this.mmenuTablesRecCanсel.Enabled = false;
             this.mmenuTablesRecCanсel.Name = "mmenuTablesRecCanсel";
-            this.mmenuTablesRecCanсel.Size = new System.Drawing.Size(180, 22);
+            this.mmenuTablesRecCanсel.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.C)));
+            this.mmenuTablesRecCanсel.Size = new System.Drawing.Size(203, 22);
             this.mmenuTablesRecCanсel.Text = "Очистить";
             this.mmenuTablesRecCanсel.Click += new System.EventHandler(this.mmenuTablesRecCansel_Click);
             // 
@@ -180,6 +195,7 @@
             // 
             // mmenuQueriesShowTable
             // 
+            this.mmenuQueriesShowTable.Enabled = false;
             this.mmenuQueriesShowTable.Name = "mmenuQueriesShowTable";
             this.mmenuQueriesShowTable.Size = new System.Drawing.Size(239, 22);
             this.mmenuQueriesShowTable.Text = "Вся таблица...";
@@ -187,6 +203,7 @@
             // 
             // mmenuQueriesShowTaskListUser
             // 
+            this.mmenuQueriesShowTaskListUser.Enabled = false;
             this.mmenuQueriesShowTaskListUser.Name = "mmenuQueriesShowTaskListUser";
             this.mmenuQueriesShowTaskListUser.Size = new System.Drawing.Size(239, 22);
             this.mmenuQueriesShowTaskListUser.Text = "Список задач на исполнителе";
@@ -194,9 +211,11 @@
             // 
             // mmenuQueriesShowTaskListProject
             // 
+            this.mmenuQueriesShowTaskListProject.Enabled = false;
             this.mmenuQueriesShowTaskListProject.Name = "mmenuQueriesShowTaskListProject";
             this.mmenuQueriesShowTaskListProject.Size = new System.Drawing.Size(239, 22);
             this.mmenuQueriesShowTaskListProject.Text = "Список задач в проекте";
+            this.mmenuQueriesShowTaskListProject.Click += new System.EventHandler(this.mmenuQueriesShowTaskListProject_Click);
             // 
             // splitContainer1
             // 

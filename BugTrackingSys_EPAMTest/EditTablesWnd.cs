@@ -30,7 +30,25 @@ namespace BugTrackingSys_EPAMTest
 
         private void btn_OK_Click(object sender, EventArgs e)
         {
-            // проверка пустого и неккоректного названия таблицы
+            try
+            {
+                bool flag = false;
+                foreach (string str in cmbBx_TablesList.Items)
+                {
+                    if (str == cmbBx_TablesList.Text)
+                    {
+                        flag = true;
+                        break;
+                    }
+
+                }
+                if (!flag) throw new Exception("Введите корректное имя таблицы!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                DialogResult = DialogResult.None;
+            }
         }
     }
 }
