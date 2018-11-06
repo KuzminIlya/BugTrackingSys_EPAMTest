@@ -27,11 +27,10 @@ namespace BugTrackingSys_EPAMTest
         public SQLiteDataAdapter    db_Adapter;
         public DataTable            db_Tab;
 
-        public List<string>         TablesList;         // Список таблиц БД
+        public List<string>         TablesList;         // Список имен таблиц БД
 
-        public bool IsInsert  = false,                  // Флаши редактирования,
-                    IsDelete  = false,                  // добавления и удаления элементов
-                    IsEdit    = false;                  // из БД
+        public bool IsInsert  = false,                  // Флаги для добавления и удаления
+                    IsDelete  = false;                  // элементов из БД
 
         public string TableName;                        // Имя текущей БД
 
@@ -64,7 +63,6 @@ namespace BugTrackingSys_EPAMTest
             mmenu_FileClose.Enabled = lck;
 
             mmenuTablesAdd.Enabled = lck;
-            mmenu_TablesEdit.Enabled = lck;
             mmenuTablesDelete.Enabled = lck;
 
             mmenuQueriesShowTable.Enabled = lck;
@@ -93,7 +91,7 @@ namespace BugTrackingSys_EPAMTest
             try
             {
                 // Закрытие соединения с текущей базой
-                if (!String.IsNullOrEmpty(db_FileName))
+                if (!String.IsNullOrEmpty(db_FileName) && !(db_Connection.State == ConnectionState.Closed))
                 {
                     db_Connection.Close();
                     db_Tab.Columns.Clear();
@@ -188,7 +186,8 @@ namespace BugTrackingSys_EPAMTest
 
             try
             {
-                if (!String.IsNullOrEmpty(db_FileName))
+                // закрытие текущей базы
+                if (!String.IsNullOrEmpty(db_FileName) && !(db_Connection.State == ConnectionState.Closed))
                 {
                     db_Connection.Close();
                     db_Tab.Columns.Clear();
@@ -236,7 +235,8 @@ namespace BugTrackingSys_EPAMTest
 
         private void mmenu_FileClose_Click(object sender, EventArgs e)                          // Закрытие текущего соединения
         {
-            if (!String.IsNullOrEmpty(db_FileName))
+            // Закрытие соединения с базой и возврат к начальному состоянию программы
+            if (!String.IsNullOrEmpty(db_FileName) && !(db_Connection.State == ConnectionState.Closed))
             {
                 LockUnlockMenu(false);
                 db_Connection.Close();
@@ -250,7 +250,8 @@ namespace BugTrackingSys_EPAMTest
 
         private void mmenu_FileExit_Click(object sender, EventArgs e)                           // Закрытие текущего соединения и выход
         {
-            if (!String.IsNullOrEmpty(db_FileName))
+            // закрытие соединения с базой и закрытие программы
+            if (!String.IsNullOrEmpty(db_FileName) && !(db_Connection.State == ConnectionState.Closed))
             {
                 db_Connection.Close();
                 AddLog("Закрыто соединение с базой данных - \' " + db_FileName + "\'", rchtxtbx_Logs);
@@ -263,6 +264,8 @@ namespace BugTrackingSys_EPAMTest
         // Пункт меню - Таблицы
         private void mmenuTablesAdd_Click(object sender, EventArgs e)                           // Добавление полей    
         {
+            // добавление элементов в таблицы
+            //вызов окна с выбором таблицы и количества элементов
             editTablesWnd = new EditTablesWnd();
             editTablesWnd.Text = "Добавление данных";
             if (editTablesWnd.ShowDialog(this) == DialogResult.Cancel)
@@ -270,6 +273,7 @@ namespace BugTrackingSys_EPAMTest
 
             try
             {
+                // установка программы в режим редактирования базы
                 IsInsert = true;
                 LockUnlockMenu(false);
                 mmenuTablesRecCanсel.Enabled = true;
@@ -282,6 +286,7 @@ namespace BugTrackingSys_EPAMTest
                 dtGrdV_TablesView.Columns.Clear();
                 dtGrdV_TablesView.Rows.Clear();
 
+                //Вывод таблицы с заданным количеством строк и заголовком выбранной таблицы
                 db_Adapter = new SQLiteDataAdapter("SELECT * FROM " + TableName,
                                        db_Connection);
                 db_Adapter.Fill(db_Tab);
@@ -308,16 +313,29 @@ namespace BugTrackingSys_EPAMTest
                 MessageBox.Show(SqEx.Message, "Ошибка записи в базу!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 IsInsert = false;
             }
+            catch (FormatException)
+            {
+                LockUnlockMenu(true);
+                mmenuTablesRecCanсel.Enabled = false;
+                mmenuTablesRecEdit.Enabled = false;
+
+                AddLog("Добавление данных в \'" + TableName + "\' не выполнено", rchtxtbx_Logs);
+                MessageBox.Show("В поле \'количество строк\' введен не числовой формат!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                IsDelete = false;
+            }
         }               
 
         private void mmenuTablesDelete_Click(object sender, EventArgs e)                        // Удаление полей 
         {
+            //удаление данных из таблицы
+            // вызов окна с выбором таблицы и количества удаляемых элементов
             editTablesWnd = new EditTablesWnd();
             editTablesWnd.Text = "Удаление данных";
             if (editTablesWnd.ShowDialog(this) == DialogResult.Cancel)
                 return;
             try
             {
+                // установка окна программы в режим редактирования базы
                 IsDelete = true;
                 LockUnlockMenu(false);
                 mmenuTablesRecCanсel.Enabled = true;
@@ -330,6 +348,7 @@ namespace BugTrackingSys_EPAMTest
                 dtGrdV_TablesView.Columns.Clear();
                 dtGrdV_TablesView.Rows.Clear();
 
+                // вывод столбца с заголовком первичного ключа для ввода удаляемых элементов
                 db_Adapter = new SQLiteDataAdapter("SELECT * FROM " + TableName,
                                        db_Connection);
                 db_Adapter.Fill(db_Tab);
@@ -352,26 +371,28 @@ namespace BugTrackingSys_EPAMTest
                 MessageBox.Show(SqEx.Message, "Ошибка удаления из базы!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 IsDelete = false;
             }
+            catch (FormatException)
+            {
+                LockUnlockMenu(true);
+                mmenuTablesRecCanсel.Enabled = false;
+                mmenuTablesRecEdit.Enabled = false;
+
+                AddLog("Удаление данных из \'" + TableName + "\' не выполнено", rchtxtbx_Logs);
+                MessageBox.Show("В поле \'количество строк\' введен не числовой формат!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                IsDelete = false;
+            }
 
         }           
 
-        private void mmenu_TablesEdit_Click(object sender, EventArgs e)                         // Редактирование полей
-        {
-            editTablesWnd = new EditTablesWnd();
-            editTablesWnd.Text = "Изменение данных";
-            editTablesWnd.txtBx_StrNum.Visible = true;
-            editTablesWnd.lblStrNum.Visible = true;
-            if (editTablesWnd.ShowDialog(this) == DialogResult.Cancel)
-                return;
-        }            
-
         private void mmenuTablesRecEdit_Click(object sender, EventArgs e)                       // Внесение изменений в БД
         {
+            // запись результатов добавления и удаления элементов в базу
             string TableName = editTablesWnd.cmbBx_TablesList.Text, Fields = "(";
             try
             {
-                if (IsInsert)
+                if (IsInsert) // для добавления
                 {
+                    // Формирование списка атрибутов для добавления
                     for (int i = 0; i < dtGrdV_TablesView.Columns.Count - 1; i++)
                     {
                         Fields += dtGrdV_TablesView.Columns[i].HeaderText + ", ";
@@ -379,6 +400,7 @@ namespace BugTrackingSys_EPAMTest
 
                     Fields += dtGrdV_TablesView.Columns[dtGrdV_TablesView.Columns.Count - 1].HeaderText + ")";
 
+                    // формирование ряда запросов INSERT в соответствии с заданным количеством добавляемых элементов
                     for (int i = 0; i < dtGrdV_TablesView.Rows.Count; i++)
                     {
                         db_Command.CommandText = "INSERT INTO " + TableName + " " + Fields + " VALUES (";
@@ -393,14 +415,12 @@ namespace BugTrackingSys_EPAMTest
                         db_Command.ExecuteNonQuery();
                     }
 
-                    mmenuTablesDelete.Enabled = !mmenuTablesDelete.Enabled;
-                    mmenu_TablesEdit.Enabled = !mmenu_TablesEdit.Enabled;
-
                     AddLog("Данные записаны в таблицу \'" + TableName + "\'", rchtxtbx_Logs);
                 }
 
-                if(IsDelete)
+                if(IsDelete) // для удаления
                 {
+                    // Прохождение по введенным первичным ключам и формирование запроса на удаление для каждого из них
                     for (int i = 0; i < dtGrdV_TablesView.Rows.Count; i++)
                     {
                         Fields = dtGrdV_TablesView.Columns[0].HeaderText;
@@ -417,11 +437,7 @@ namespace BugTrackingSys_EPAMTest
                     AddLog("Данные удалены из таблицы \'" + TableName + "\'", rchtxtbx_Logs);
                 }
 
-                if(IsEdit)
-                {
-
-                }
-
+                // возврат окна программы в начальный вид
                 LockUnlockMenu(true);
                 mmenuTablesRecCanсel.Enabled = false;
                 mmenuTablesRecEdit.Enabled = false;
@@ -439,7 +455,7 @@ namespace BugTrackingSys_EPAMTest
 
         private void mmenuTablesRecCansel_Click(object sender, EventArgs e)                     // Отмена изменений в БД
         {
-            IsInsert = IsDelete = IsEdit = false;
+            IsInsert = IsDelete = false;
 
             db_Tab.Columns.Clear();
             db_Tab.Rows.Clear();
@@ -455,6 +471,8 @@ namespace BugTrackingSys_EPAMTest
         // Пункт меню - Запросы
         private void mmenuQueriesShowTable_Click(object sender, EventArgs e)                    // Показать таблицы целиком на выбор
         {
+            // выдача всех данных из выбранной таблицы
+            // вызов окна с выбором таблицы
             editTablesWnd = new EditTablesWnd();
             editTablesWnd.Text = "Показать данные таблицы";
             editTablesWnd.txtBx_StrNum.Visible = false;
@@ -464,6 +482,7 @@ namespace BugTrackingSys_EPAMTest
 
             try
             {
+                // формирование запроса и заполнение DataGridView
                 TableName = editTablesWnd.cmbBx_TablesList.Text;
                 db_Tab.Columns.Clear();
                 db_Tab.Rows.Clear();
@@ -500,17 +519,31 @@ namespace BugTrackingSys_EPAMTest
 
         private void mmenuQueriesShowTaskListProject_Click(object sender, EventArgs e)          // Показать список задач в проекте
         {
+            // формирование запроса и отображение результата для списка ззадач в проекте
+            CreateQueries("SELECT Тема, Тип, Приоритет, Исполнитель, Описание FROM Задачи WHERE Проект = ");
+        }
+
+        private void mmenuQueriesShowTaskListUser_Click(object sender, EventArgs e)             // Показать список задач на исполнителе
+        {
+            // формирование запроса и отображение результата для списка задач на исполнителя
+            CreateQueries("SELECT Тема, Тип, Приоритет, Проект, Описание FROM Задачи WHERE Исполнитель = ");           
+        }
+
+        // для некоторых запросов
+        public void CreateQueries(string Que)
+        {
             editTablesWnd = new EditTablesWnd();
             editTablesWnd.Text = "Показать данные таблицы";
             editTablesWnd.txtBx_StrNum.Visible = true;
             editTablesWnd.lblStrNum.Visible = true;
-            editTablesWnd.lblStrNum.Text = "Значение поля";
+            editTablesWnd.lblTables.Visible = false;
+            editTablesWnd.cmbBx_TablesList.Visible = false;
+            editTablesWnd.lblStrNum.Text = "Значение\n поля";
             if (editTablesWnd.ShowDialog(this) == DialogResult.Cancel)
                 return;
 
             try
             {
-                TableName = editTablesWnd.cmbBx_TablesList.Text;
                 string QueField = editTablesWnd.txtBx_StrNum.Text;
 
                 db_Tab.Columns.Clear();
@@ -518,7 +551,7 @@ namespace BugTrackingSys_EPAMTest
                 dtGrdV_TablesView.Columns.Clear();
                 dtGrdV_TablesView.Rows.Clear();
 
-                db_Adapter = new SQLiteDataAdapter("SELECT Тема, Тип, Приоритет, Исполнитель, Проект, Описание FROM Задачи WHERE Проект = " + "\'" + QueField + "\';",
+                db_Adapter = new SQLiteDataAdapter(Que + "\'" + QueField + "\';",
                                        db_Connection);
                 db_Adapter.Fill(db_Tab);
 
@@ -537,18 +570,13 @@ namespace BugTrackingSys_EPAMTest
 
                 dtGrdV_TablesView.ReadOnly = true;
 
-                AddLog("Выполнен запрос на выдачу списка задач в проекте \'" + QueField + "\'", rchtxtbx_Logs);
+                AddLog("Выполнен запрос к таблице \'Задачи\' для поля \'" + QueField + "\'", rchtxtbx_Logs);
             }
             catch (SQLiteException SqEx)
             {
                 AddLog("Запрос к таблице \'" + editTablesWnd.cmbBx_TablesList.Text + "\' не выполнен", rchtxtbx_Logs);
                 MessageBox.Show(SqEx.Message, "Неверный запрос к базе!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void mmenuQueriesShowTaskListUser_Click(object sender, EventArgs e)             // Показать список задач на исполнителе
-        {
-
         }
     }
 }

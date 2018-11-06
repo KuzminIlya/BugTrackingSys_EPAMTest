@@ -121,9 +121,9 @@
 
         private System.Windows.Forms.Button btn_OK;
         private System.Windows.Forms.Button btn_Cancel;
-        private System.Windows.Forms.Label lblTables;
         public System.Windows.Forms.ComboBox cmbBx_TablesList;
         public System.Windows.Forms.TextBox txtBx_StrNum;
         public System.Windows.Forms.Label lblStrNum;
+        public System.Windows.Forms.Label lblTables;
     }
 }

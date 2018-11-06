@@ -42,7 +42,7 @@ namespace BugTrackingSys_EPAMTest
                     }
 
                 }
-                if (!flag) throw new Exception("Введите корректное имя таблицы!");
+                if (!flag && cmbBx_TablesList.Visible) throw new Exception("Введите корректное имя таблицы!");
             }
             catch (Exception ex)
             {
