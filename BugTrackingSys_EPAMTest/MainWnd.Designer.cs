@@ -40,15 +40,12 @@
             this.mmenuTablesDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.mmenu_TablesEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.mmenuTablesRefresh = new System.Windows.Forms.ToolStripMenuItem();
-            this.mmenuTablesRefreshAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.mmenuTablesRecEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mmenuTablesRecCanсel = new System.Windows.Forms.ToolStripMenuItem();
             this.mmenuQueries = new System.Windows.Forms.ToolStripMenuItem();
-            this.mmenuQueriesShow = new System.Windows.Forms.ToolStripMenuItem();
             this.mmenuQueriesShowTable = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.mmenuQueriesShowTaskListProject = new System.Windows.Forms.ToolStripMenuItem();
             this.mmenuQueriesShowTaskListUser = new System.Windows.Forms.ToolStripMenuItem();
-            this.mmenuQueriesCreate = new System.Windows.Forms.ToolStripMenuItem();
+            this.mmenuQueriesShowTaskListProject = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dtGrdV_TablesView = new System.Windows.Forms.DataGridView();
             this.rchtxtbx_Logs = new System.Windows.Forms.RichTextBox();
@@ -88,33 +85,33 @@
             // mmenu_FileCreate
             // 
             this.mmenu_FileCreate.Name = "mmenu_FileCreate";
-            this.mmenu_FileCreate.Size = new System.Drawing.Size(180, 22);
+            this.mmenu_FileCreate.Size = new System.Drawing.Size(137, 22);
             this.mmenu_FileCreate.Text = "Создать...";
             this.mmenu_FileCreate.Click += new System.EventHandler(this.mmenu_FileCreate_Click);
             // 
             // mmenu_FileLoad
             // 
             this.mmenu_FileLoad.Name = "mmenu_FileLoad";
-            this.mmenu_FileLoad.Size = new System.Drawing.Size(180, 22);
+            this.mmenu_FileLoad.Size = new System.Drawing.Size(137, 22);
             this.mmenu_FileLoad.Text = "Загрузить...";
             this.mmenu_FileLoad.Click += new System.EventHandler(this.mmenu_FileLoad_Click);
             // 
             // mmenu_FileClose
             // 
             this.mmenu_FileClose.Name = "mmenu_FileClose";
-            this.mmenu_FileClose.Size = new System.Drawing.Size(180, 22);
+            this.mmenu_FileClose.Size = new System.Drawing.Size(137, 22);
             this.mmenu_FileClose.Text = "Закрыть";
             this.mmenu_FileClose.Click += new System.EventHandler(this.mmenu_FileClose_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(134, 6);
             // 
             // mmenu_FileExit
             // 
             this.mmenu_FileExit.Name = "mmenu_FileExit";
-            this.mmenu_FileExit.Size = new System.Drawing.Size(180, 22);
+            this.mmenu_FileExit.Size = new System.Drawing.Size(137, 22);
             this.mmenu_FileExit.Text = "Выход";
             this.mmenu_FileExit.Click += new System.EventHandler(this.mmenu_FileExit_Click);
             // 
@@ -125,8 +122,8 @@
             this.mmenuTablesDelete,
             this.mmenu_TablesEdit,
             this.toolStripMenuItem2,
-            this.mmenuTablesRefresh,
-            this.mmenuTablesRefreshAll});
+            this.mmenuTablesRecEdit,
+            this.mmenuTablesRecCanсel});
             this.mmenuTables.Name = "mmenuTables";
             this.mmenuTables.Size = new System.Drawing.Size(69, 20);
             this.mmenuTables.Text = "Таблицы";
@@ -157,58 +154,36 @@
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
             // 
-            // mmenuTablesRefresh
+            // mmenuTablesRecEdit
             // 
-            this.mmenuTablesRefresh.Name = "mmenuTablesRefresh";
-            this.mmenuTablesRefresh.Size = new System.Drawing.Size(180, 22);
-            this.mmenuTablesRefresh.Text = "Обновить...";
-            this.mmenuTablesRefresh.Click += new System.EventHandler(this.mmenuTablesRefresh_Click);
+            this.mmenuTablesRecEdit.Name = "mmenuTablesRecEdit";
+            this.mmenuTablesRecEdit.Size = new System.Drawing.Size(180, 22);
+            this.mmenuTablesRecEdit.Text = "Записать";
+            this.mmenuTablesRecEdit.Click += new System.EventHandler(this.mmenuTablesRecEdit_Click);
             // 
-            // mmenuTablesRefreshAll
+            // mmenuTablesRecCanсel
             // 
-            this.mmenuTablesRefreshAll.Name = "mmenuTablesRefreshAll";
-            this.mmenuTablesRefreshAll.Size = new System.Drawing.Size(180, 22);
-            this.mmenuTablesRefreshAll.Text = "Обновить все";
-            this.mmenuTablesRefreshAll.Click += new System.EventHandler(this.mmenuTablesRefreshAll_Click);
+            this.mmenuTablesRecCanсel.Name = "mmenuTablesRecCanсel";
+            this.mmenuTablesRecCanсel.Size = new System.Drawing.Size(180, 22);
+            this.mmenuTablesRecCanсel.Text = "Очистить";
+            this.mmenuTablesRecCanсel.Click += new System.EventHandler(this.mmenuTablesRecCansel_Click);
             // 
             // mmenuQueries
             // 
             this.mmenuQueries.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mmenuQueriesShow,
-            this.mmenuQueriesCreate});
+            this.mmenuQueriesShowTable,
+            this.mmenuQueriesShowTaskListUser,
+            this.mmenuQueriesShowTaskListProject});
             this.mmenuQueries.Name = "mmenuQueries";
             this.mmenuQueries.Size = new System.Drawing.Size(68, 20);
             this.mmenuQueries.Text = "Запросы";
-            // 
-            // mmenuQueriesShow
-            // 
-            this.mmenuQueriesShow.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mmenuQueriesShowTable,
-            this.toolStripMenuItem3,
-            this.mmenuQueriesShowTaskListProject,
-            this.mmenuQueriesShowTaskListUser});
-            this.mmenuQueriesShow.Name = "mmenuQueriesShow";
-            this.mmenuQueriesShow.Size = new System.Drawing.Size(180, 22);
-            this.mmenuQueriesShow.Text = "Показать";
             // 
             // mmenuQueriesShowTable
             // 
             this.mmenuQueriesShowTable.Name = "mmenuQueriesShowTable";
             this.mmenuQueriesShowTable.Size = new System.Drawing.Size(239, 22);
-            this.mmenuQueriesShowTable.Text = "Всю таблицу...";
+            this.mmenuQueriesShowTable.Text = "Вся таблица...";
             this.mmenuQueriesShowTable.Click += new System.EventHandler(this.mmenuQueriesShowTable_Click);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(236, 6);
-            // 
-            // mmenuQueriesShowTaskListProject
-            // 
-            this.mmenuQueriesShowTaskListProject.Name = "mmenuQueriesShowTaskListProject";
-            this.mmenuQueriesShowTaskListProject.Size = new System.Drawing.Size(239, 22);
-            this.mmenuQueriesShowTaskListProject.Text = "Список задач в проекте";
-            this.mmenuQueriesShowTaskListProject.Click += new System.EventHandler(this.mmenuQueriesShowTaskListProject_Click);
             // 
             // mmenuQueriesShowTaskListUser
             // 
@@ -217,11 +192,11 @@
             this.mmenuQueriesShowTaskListUser.Text = "Список задач на исполнителе";
             this.mmenuQueriesShowTaskListUser.Click += new System.EventHandler(this.mmenuQueriesShowTaskListUser_Click);
             // 
-            // mmenuQueriesCreate
+            // mmenuQueriesShowTaskListProject
             // 
-            this.mmenuQueriesCreate.Name = "mmenuQueriesCreate";
-            this.mmenuQueriesCreate.Size = new System.Drawing.Size(180, 22);
-            this.mmenuQueriesCreate.Text = "Создать запрос...";
+            this.mmenuQueriesShowTaskListProject.Name = "mmenuQueriesShowTaskListProject";
+            this.mmenuQueriesShowTaskListProject.Size = new System.Drawing.Size(239, 22);
+            this.mmenuQueriesShowTaskListProject.Text = "Список задач в проекте";
             // 
             // splitContainer1
             // 
@@ -243,6 +218,8 @@
             // 
             // dtGrdV_TablesView
             // 
+            this.dtGrdV_TablesView.AllowUserToAddRows = false;
+            this.dtGrdV_TablesView.AllowUserToDeleteRows = false;
             this.dtGrdV_TablesView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGrdV_TablesView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtGrdV_TablesView.Location = new System.Drawing.Point(0, 0);
@@ -262,7 +239,7 @@
             // 
             // opnFlDlg_LoadDataSource
             // 
-            this.opnFlDlg_LoadDataSource.FileName = "openFileDialog1";
+            this.opnFlDlg_LoadDataSource.Filter = "Файлы БД|*.db";
             // 
             // MainWnd
             // 
@@ -275,6 +252,7 @@
             this.Name = "MainWnd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bug Tracking System Test";
+            this.Load += new System.EventHandler(this.MainWnd_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -299,21 +277,18 @@
         private System.Windows.Forms.ToolStripMenuItem mmenuTables;
         private System.Windows.Forms.ToolStripMenuItem mmenuTablesAdd;
         private System.Windows.Forms.ToolStripMenuItem mmenuTablesDelete;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem mmenuTablesRefresh;
-        private System.Windows.Forms.ToolStripMenuItem mmenuTablesRefreshAll;
         private System.Windows.Forms.ToolStripMenuItem mmenuQueries;
-        private System.Windows.Forms.ToolStripMenuItem mmenuQueriesCreate;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridView dtGrdV_TablesView;
         private System.Windows.Forms.RichTextBox rchtxtbx_Logs;
         private System.Windows.Forms.ToolStripMenuItem mmenu_TablesEdit;
-        private System.Windows.Forms.ToolStripMenuItem mmenuQueriesShow;
-        private System.Windows.Forms.ToolStripMenuItem mmenuQueriesShowTable;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem mmenuQueriesShowTaskListProject;
-        private System.Windows.Forms.ToolStripMenuItem mmenuQueriesShowTaskListUser;
         private System.Windows.Forms.OpenFileDialog opnFlDlg_LoadDataSource;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem mmenuTablesRecEdit;
+        private System.Windows.Forms.ToolStripMenuItem mmenuQueriesShowTable;
+        private System.Windows.Forms.ToolStripMenuItem mmenuQueriesShowTaskListUser;
+        private System.Windows.Forms.ToolStripMenuItem mmenuQueriesShowTaskListProject;
+        private System.Windows.Forms.ToolStripMenuItem mmenuTablesRecCanсel;
     }
 }
 

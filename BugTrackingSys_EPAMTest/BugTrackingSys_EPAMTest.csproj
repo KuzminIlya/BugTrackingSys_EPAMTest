@@ -64,7 +64,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BugTrack_DataBase.cs" />
+    <Compile Include="CreatedbWnd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreatedbWnd.Designer.cs">
+      <DependentUpon>CreatedbWnd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditTablesWnd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditTablesWnd.Designer.cs">
+      <DependentUpon>EditTablesWnd.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainWnd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +84,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CreatedbWnd.resx">
+      <DependentUpon>CreatedbWnd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditTablesWnd.resx">
+      <DependentUpon>EditTablesWnd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainWnd.resx">
       <DependentUpon>MainWnd.cs</DependentUpon>
     </EmbeddedResource>
