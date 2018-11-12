@@ -32,8 +32,10 @@
             this.mmenu_File = new System.Windows.Forms.ToolStripMenuItem();
             this.mmenu_FileCreate = new System.Windows.Forms.ToolStripMenuItem();
             this.mmenu_FileLoad = new System.Windows.Forms.ToolStripMenuItem();
-            this.mmenu_FileClose = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mmenuFileSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.mmenu_FileClose = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.mmenu_FileExit = new System.Windows.Forms.ToolStripMenuItem();
             this.mmenuTables = new System.Windows.Forms.ToolStripMenuItem();
             this.mmenuTablesAdd = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,8 +76,10 @@
             this.mmenu_File.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mmenu_FileCreate,
             this.mmenu_FileLoad,
-            this.mmenu_FileClose,
             this.toolStripMenuItem1,
+            this.mmenuFileSave,
+            this.mmenu_FileClose,
+            this.toolStripMenuItem3,
             this.mmenu_FileExit});
             this.mmenu_File.Name = "mmenu_File";
             this.mmenu_File.Size = new System.Drawing.Size(48, 20);
@@ -85,7 +89,7 @@
             // 
             this.mmenu_FileCreate.Name = "mmenu_FileCreate";
             this.mmenu_FileCreate.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.mmenu_FileCreate.Size = new System.Drawing.Size(177, 22);
+            this.mmenu_FileCreate.Size = new System.Drawing.Size(180, 22);
             this.mmenu_FileCreate.Text = "Создать...";
             this.mmenu_FileCreate.Click += new System.EventHandler(this.mmenu_FileCreate_Click);
             // 
@@ -93,28 +97,41 @@
             // 
             this.mmenu_FileLoad.Name = "mmenu_FileLoad";
             this.mmenu_FileLoad.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.mmenu_FileLoad.Size = new System.Drawing.Size(177, 22);
+            this.mmenu_FileLoad.Size = new System.Drawing.Size(180, 22);
             this.mmenu_FileLoad.Text = "Загрузить...";
             this.mmenu_FileLoad.Click += new System.EventHandler(this.mmenu_FileLoad_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // mmenuFileSave
+            // 
+            this.mmenuFileSave.Name = "mmenuFileSave";
+            this.mmenuFileSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.mmenuFileSave.Size = new System.Drawing.Size(180, 22);
+            this.mmenuFileSave.Text = "Сохранить";
+            this.mmenuFileSave.Click += new System.EventHandler(this.mmenuFileSave_Click);
             // 
             // mmenu_FileClose
             // 
             this.mmenu_FileClose.Enabled = false;
             this.mmenu_FileClose.Name = "mmenu_FileClose";
-            this.mmenu_FileClose.Size = new System.Drawing.Size(177, 22);
+            this.mmenu_FileClose.Size = new System.Drawing.Size(180, 22);
             this.mmenu_FileClose.Text = "Закрыть";
             this.mmenu_FileClose.Click += new System.EventHandler(this.mmenu_FileClose_Click);
             // 
-            // toolStripMenuItem1
+            // toolStripMenuItem3
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(174, 6);
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
             // 
             // mmenu_FileExit
             // 
             this.mmenu_FileExit.Name = "mmenu_FileExit";
             this.mmenu_FileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.mmenu_FileExit.Size = new System.Drawing.Size(177, 22);
+            this.mmenu_FileExit.Size = new System.Drawing.Size(180, 22);
             this.mmenu_FileExit.Text = "Выход";
             this.mmenu_FileExit.Click += new System.EventHandler(this.mmenu_FileExit_Click);
             // 
@@ -296,6 +313,8 @@
         private System.Windows.Forms.ToolStripMenuItem mmenuQueriesShowTaskListUser;
         private System.Windows.Forms.ToolStripMenuItem mmenuQueriesShowTaskListProject;
         private System.Windows.Forms.ToolStripMenuItem mmenuTablesRecCanсel;
+        private System.Windows.Forms.ToolStripMenuItem mmenuFileSave;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
     }
 }
 

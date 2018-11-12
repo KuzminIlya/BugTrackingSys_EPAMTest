@@ -19,9 +19,9 @@ namespace BugTrackingSys_EPAMTest
             InitializeComponent();
         }
 
-        public string DB_Path = "";
+        public string File_Path = "";
 
-        public static bool FileNameIsCorrect(string FileName)
+        public static bool IsFileNameCorrect(string FileName)
         {
             string RegEX = @"[^a-zA-z\d_]";
             return !string.IsNullOrWhiteSpace(FileName) && 
@@ -33,23 +33,30 @@ namespace BugTrackingSys_EPAMTest
         {
             try
             {
-                if(!FileNameIsCorrect(txtBxDBName.Text))
+                if(!IsFileNameCorrect(txtBxDBName.Text))
                 {
                     throw new Exception();
                 }
 
-                if (!Directory.Exists(DB_Path))
+                if (!Directory.Exists(File_Path))
                 {
                     throw new DirectoryNotFoundException();
                 }
 
                 if (chkBxCreateSubCat.Checked)
                 {
-                    DB_Path += "\\" + txtBxDBName.Text;
-                    Directory.CreateDirectory(DB_Path);
+                    File_Path += "\\" + txtBxDBName.Text;
+                    Directory.CreateDirectory(File_Path);
                 }
-                DB_Path += "\\" + txtBxDBName.Text + ".db";
 
+                File_Path += "\\" + txtBxDBName.Text + ".db";
+
+                if (File.Exists(File_Path))
+                {
+                    DialogResult = MessageBox.Show("Данный файл уже существует! Заменить?", "Файл существует!", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                }
+
+                (this.Owner as MainWnd).FilePath = File_Path;
             }
             catch (DirectoryNotFoundException)
             {
@@ -68,8 +75,8 @@ namespace BugTrackingSys_EPAMTest
             if (fldBrsDlg_CreateFoldDB.ShowDialog() == DialogResult.Cancel)
                 return;
 
-            DB_Path += fldBrsDlg_CreateFoldDB.SelectedPath;
-            txtBxDBFilePath.Text = DB_Path;
+            File_Path += fldBrsDlg_CreateFoldDB.SelectedPath;
+            txtBxDBFilePath.Text = File_Path;
         }
     }
 }

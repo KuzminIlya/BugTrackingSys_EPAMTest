@@ -26,6 +26,7 @@ namespace BugTrackingSys_EPAMTest
             {
                 cmbBx_TablesList.Items.Add(name);
             }
+            cmbBx_TablesList.SelectedIndex = 0;
         }
 
         private void btn_OK_Click(object sender, EventArgs e)
@@ -48,6 +49,18 @@ namespace BugTrackingSys_EPAMTest
             {
                 MessageBox.Show(ex.Message);
                 DialogResult = DialogResult.None;
+            }
+        }
+
+        private void txtBx_StrNum_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (cmbBx_TablesList.Visible == true)
+            {
+                if (!(Char.IsDigit(e.KeyChar) ||
+                      e.KeyChar == ((char)Keys.Back)))
+                {
+                    e.Handled = true;
+                }
             }
         }
     }

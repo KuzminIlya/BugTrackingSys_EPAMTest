@@ -134,7 +134,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Создание БД";
+            this.Text = "Создание таблиц";
             this.ResumeLayout(false);
             this.PerformLayout();
 

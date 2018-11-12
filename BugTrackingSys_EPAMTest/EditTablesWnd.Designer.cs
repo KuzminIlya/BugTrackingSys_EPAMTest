@@ -89,6 +89,7 @@
             this.txtBx_StrNum.Name = "txtBx_StrNum";
             this.txtBx_StrNum.Size = new System.Drawing.Size(201, 20);
             this.txtBx_StrNum.TabIndex = 5;
+            this.txtBx_StrNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBx_StrNum_KeyPress);
             // 
             // EditTablesWnd
             // 
