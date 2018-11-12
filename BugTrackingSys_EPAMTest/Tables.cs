@@ -48,8 +48,8 @@ namespace BugTrackingSys_EPAMTest
         }
 
         // ПОЛЯ
-        public      List<string>        TableHead;  // заголовок таблицы
-        public      List<string>[]      TableBody;  // тело таблицы
+        protected      List<string>        TableHead;  // заголовок таблицы
+        protected      List<string>[]      TableBody;  // тело таблицы
         protected   List<TableLink>     Links;      // связь с другими таблицами
         protected   int                 NumAtr;     // количество атрибутов
         //
